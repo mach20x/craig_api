@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password_digest])
+    if user
       session[:user_id] = user.id
       redirect_to craigslist_index_path
     else

@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   resources :reviews
   resources :users
   resource :session
-  root to: 'craigslist#index'
+  root 'sessions#new'
   get 'craigslist/index'
-  get "log_out" => "session#destroy", :as => "log_out"
-  get "log_in" => "session#new", :as => "log_in"
+  get 'reviews/new'
+  get 'reviews/index'
+  get 'craigslist/reviews/new'
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
   get '/signup' => 'users#new'
   get '/users' => 'users#create'
   post '/users' => 'users#create'
